@@ -1,185 +1,82 @@
-# NEXEN.AI Portfolio - Local Development Guide
+# 🚀 NexeN.AI - AI Automation Agency Portfolio
 
-## 🚀 Quick Start
+[![Website Live](https://img.shields.io/badge/Live_Website-nexen--ai.vercel.app-success?style=for-the-badge&logo=vercel)](https://nexen-ai.vercel.app)
 
-Your website is now running locally and fully functional!
+NexeN.AI is a high-throughput AI automation agency portfolio. We design, build, and deploy intelligent autonomous systems that operate at machine speed. 
 
-### Current Status
-✅ Server Running on: **http://localhost:8080**
-✅ All API endpoints working
-✅ Portfolio loading dynamically
-✅ Live news feed active
+## 🌐 Live Website
+Check out the fully functional live portfolio here: **[https://nexen-ai.vercel.app](https://nexen-ai.vercel.app)**
+
+## ⚡ Core Technologies & Stack
+- **Workflows:** n8n (Node-based automation)
+- **Database Backend:** Supabase (PostgreSQL)
+- **Hosting & Deployment:** Vercel (Edge-ready)
+- **Integrations:** Telegram API, Custom Webhooks, Express Server
+- **Frontend Stack:** HTML/CSS/JS with smooth 3D animations and responsive UI
+
+## ✨ Built For
+- **SaaS founders** automating growth operations
+- **Agencies** scaling client workflows
+- **Crypto & AI startups** shipping intelligent products
+- **Teams** needing high-volume content or support systems
+
+## 🛠 What We Automate
+- Lead generation and CRM workflows
+- Content pipelines and publishing systems
+- Telegram / WhatsApp bots and messaging ops
+- AI customer support and task orchestration
+
+## 📈 Proven Impact
+- **GeoNews AI Stream:** Real-time AI news curation and summarization. An n8n-to-Telegram pipeline processing 12,000+ messages daily with sub-second latency.
+- **Ops Optimization:** Reduced manual ops by 82% for a finance platform by connecting data ingestion, orchestration, and reporting.
+- **Enterprise Support:** Delivered 18x throughput improvement for support flows with an AI-driven ticket triage layer.
 
 ---
 
-## 📋 Setup Instructions
+## 💻 Local Development Guide
+
+If you'd like to run this web application locally, follow these steps:
 
 ### Prerequisites
 - Node.js installed (v14 or higher)
 - npm or yarn
 
-### Installation Steps
+### Installation & Setup
 
 1. **Install Dependencies**
    ```bash
    npm install
    ```
 
-2. **Start the Server**
+2. **Environment Variables**
+   Create a `.env.local` file based on `.env.example`:
+   ```bash
+   cp .env.example .env.local
+   # Note for Windows: copy .env.example .env.local
+   ```
+   Add your `SUPABASE_KEY` and `TELEGRAM_BOT_TOKEN` for full functionality.
+
+3. **Start the Server**
    ```bash
    npm start
    ```
-
    Or for development with auto-reload:
    ```bash
    npm run dev
    ```
 
-3. **Open in Browser**
-   ```
-   http://localhost:8080
-   ```
+4. **Open in Browser**
+   Navigate to `http://localhost:8080`
 
----
-
-## 🔗 Available API Endpoints
-
-### Get News Feed
-```bash
-GET /api/news
-```
-Returns array of news items with emoji and headlines.
-
-### Update News Feed
-```bash
-POST /api/news
-Content-Type: application/json
-
-{
-  "news": [
-    { "emoji": "🤖", "headline": "Your news here" }
-  ]
-}
-```
-
-### Get Portfolio Projects
-```bash
-GET /api/projects
-```
-Returns portfolio projects from `data/projects.json`.
-
----
-
-## 📁 Project Structure
-
-```
-shadowlord-repo/
-├── public/
-│   ├── index.html          (Main website)
-│   ├── Agency-logo.png
-│   ├── workflow1.png
-│   ├── workflow2.png
-│   ├── workflow3.png
-│   └── images/             (Portfolio images)
-├── data/
-│   └── projects.json       (Portfolio data)
-├── api/
-│   └── news.js             (Original Vercel API)
-├── server.js               (Local development server)
-├── package.json
-├── vercel.json             (For Vercel deployment)
-└── README.md
-```
-
----
-
-## 🛠 Making Changes
-
-### Edit Website Content
-- Edit `public/index.html` for HTML/CSS changes
-- Changes will reflect after refreshing the browser
-
-### Update Portfolio Projects
-- Edit `data/projects.json` to add/update projects
-- Refresh browser to see changes
-
-### Modify News Feed
-- Edit news data in `server.js` (line where `newsData` is defined)
-- Or use the POST `/api/news` endpoint
-
----
-
-## ⚡ Features Included
-
-✅ Responsive design (Mobile & Desktop)
-✅ Dark theme with lime/cyan accents
-✅ Live news feed system
-✅ Dynamic portfolio loading
-✅ Smooth animations & transitions
-✅ 3D workflow cube rotation
-✅ Contact form with validation
-✅ Social media links
-✅ Telegram integration ready
-✅ Supabase integration ready
-
----
+### Available API Endpoints
+- `GET /api/news` - Returns array of live news feed items.
+- `POST /api/news` - Update live news feed.
+- `GET /api/projects` - Dynamically load portfolio projects.
+- `POST /api/contact` - Submits a new lead form. Saves to Supabase and sends an instant Telegram alert.
+- `GET /api/contacts` - Admin view of connected leads.
 
 ## 📞 Contact Information
-
-- **Email**: nagasaireddy0123@gmail.com
-- **Phone**: +91 72039 59848
-- **Instagram**: @nexen.ai.sr
-- **LinkedIn**: Nagasai Reddy (CEO)
-- **GitHub**: SaiReddy-Sr
-
----
-
-## 🚢 Ready to Deploy
-
-Once you've tested locally and everything looks good:
-
-### Deploy to Vercel
-```bash
-git push origin main
-```
-
-The `vercel.json` configuration is already set up for automatic deployment.
-
----
-
-## ✨ Quick Fixes Made
-
-1. ✅ Moved `index.html` to `/public/index.html`
-2. ✅ Created Express.js local server
-3. ✅ Fixed API endpoints for local development
-4. ✅ Copied all assets to `/public` directory
-5. ✅ Updated relative paths in portfolio loading
-6. ✅ Added sample news data
-7. ✅ Created proper NPM configuration
-
----
-
-## 🆘 Troubleshooting
-
-**Port 8080 already in use?**
-- Edit `server.js` and change PORT to another number (e.g., 3001, 5000)
-- Or set environment variable: `PORT=3001 npm start`
-
-**Portfolio not loading?**
-- Check browser console for errors
-- Verify `data/projects.json` exists
-- Check that `/api/projects` endpoint returns data
-
-**Images not showing?**
-- Ensure all assets are in `/public` directory
-- Check image paths in HTML (should be relative)
-
----
-
-## 📝 Notes
-
-- The site is fully functional locally
-- All animations and interactions work
-- Contact form is connected to Supabase (configured via .env)
-- Telegram notifications are ready (configured via .env)
-- Ready to push to GitHub anytime
+- **Email:** nagasaireddy0123@gmail.com
+- **Phone:** +91 72039 59848
+- **LinkedIn:** [Nagasai Reddy (CEO)](https://www.linkedin.com/in/nagasai-reddy-lankireddy/)
+- **GitHub:** [SaiReddy-Sr](https://github.com/SaiReddy-Sr)
